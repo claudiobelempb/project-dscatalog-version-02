@@ -1,6 +1,6 @@
 import { Method } from 'axios';
 
-export type TypeAxiosPage = {
+export type Axios = {
   method?: Method;
   url: string;
   data?: object;

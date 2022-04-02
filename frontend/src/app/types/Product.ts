@@ -1,6 +1,6 @@
-import { TypeCategoryPage } from './TypeCategoryPage';
+import { Category } from './Category';
 
-export type TypeProductPage = {
+export type Product = {
   id?: number;
   name: string;
   description?: string;
@@ -9,5 +9,5 @@ export type TypeProductPage = {
   status?: string;
   createdAt?: string;
   updatedAt?: string | null;
-  categories?: TypeCategoryPage[];
+  categories?: Category[];
 };

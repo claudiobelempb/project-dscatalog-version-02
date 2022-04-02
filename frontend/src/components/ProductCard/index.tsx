@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 import ProductImg from 'assets/images/product-default.svg';
 import { ProductPrice } from '../../components/ProductPrice';
-import { TypeProductPage } from '../../app/types/TypeProductPage';
+import { Product } from '../../app/types/Product';
 
 type ProductCardProps = {
-  product: TypeProductPage;
+  product: Product;
 };
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {

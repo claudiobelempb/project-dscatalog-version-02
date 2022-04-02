@@ -16,10 +16,7 @@ const LayoutDashBoard: React.FC<LayoutDashBoardProps> = ({
   return (
     <>
       <header className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <Link
-          className="navbar-brand col-md-3 col-lg-2 me-0 px-3"
-          to="/dashboard"
-        >
+        <Link className="navbar-brand col-md-3 col-lg-2 me-0 px-3" to="/admin">
           DS Catalog
         </Link>
         <button
@@ -56,11 +53,7 @@ const LayoutDashBoard: React.FC<LayoutDashBoardProps> = ({
             <div className="position-sticky pt-3">
               <ul className="nav flex-column">
                 <li className="nav-item">
-                  <NavLink
-                    className="nav-link"
-                    aria-current="page"
-                    to="/dashboard"
-                  >
+                  <NavLink className="nav-link" aria-current="page" to="/admin">
                     <span data-feather="home">
                       <FaHome className="me-2" />
                     </span>
@@ -68,7 +61,7 @@ const LayoutDashBoard: React.FC<LayoutDashBoardProps> = ({
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/products">
+                  <NavLink className="nav-link" to="/admin/products">
                     <span data-feather="shopping-cart">
                       <FaShoppingCart className="me-2" />
                     </span>
@@ -76,7 +69,7 @@ const LayoutDashBoard: React.FC<LayoutDashBoardProps> = ({
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/categories">
+                  <NavLink className="nav-link" to="/admin/categories">
                     <span data-feather="shopping-cart">
                       <FaTag className="me-2" />
                     </span>
@@ -84,7 +77,7 @@ const LayoutDashBoard: React.FC<LayoutDashBoardProps> = ({
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/users">
+                  <NavLink className="nav-link" to="/admin/users">
                     <span data-feather="users">
                       <FaUserFriends className="me-2" />
                     </span>

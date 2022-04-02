@@ -1,24 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { api } from '../../app/http/index';
+import { RequestClient } from '../../app/http/RequestClient';
 
 import { FaArrowLeft } from 'react-icons/fa';
 import { ProductPrice } from '../../components/ProductPrice';
 import { LayoutHome } from '../../components/Layout/LayoutHome';
-import { TypeProductPage } from '../../app/types/TypeProductPage';
+import { Product } from '../../app/types/Product';
 import { LoaderDefault } from 'app/common/LoaderDefault';
+// import { AxiosRequestConfig, AxiosResponse } from 'axios';
 
 type paramsProps = {
   id: string;
 };
 
 const ProductDetail: React.FC = () => {
-  const [product, setProduct] = useState<TypeProductPage>();
+  const [product, setProduct] = useState<Product>();
 
   const { id } = useParams<paramsProps>();
 
   useEffect(() => {
-    api.get<TypeProductPage>(`/api/products/${id}`).then(response => {
+    RequestClient({
+      method: 'GET',
+      url: `/api/products/${id}`,
+    }).then(response => {
       setProduct(response.data);
     });
   }, [id]);

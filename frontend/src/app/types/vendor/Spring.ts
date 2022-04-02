@@ -1,4 +1,4 @@
-export type TypeSpringPage<T> = {
+export type Spring<T> = {
   content: T[];
   totalElements: number;
   totalPages: number;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 // import styles from './styles.module.scss';
 
 const Nav: React.FC = () => {
@@ -18,19 +19,19 @@ const Nav: React.FC = () => {
       <div className="collapse navbar-collapse" id="dscatalog-navbar">
         <ul className="navbar-nav ms-auto">
           <li className="nav-item">
-            <a className=" active nav-link" aria-current="page" href="/">
+            <Link className=" active nav-link" aria-current="page" to="/">
               Home
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/catalog">
+            <Link className="nav-link" to="/products">
               Catálogo
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/dashboard">
+            <Link className="nav-link" to="/admin/auth/login">
               Admin
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

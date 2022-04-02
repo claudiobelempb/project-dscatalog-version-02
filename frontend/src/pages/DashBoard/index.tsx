@@ -1,13 +1,13 @@
-import axios from 'axios';
 import React from 'react';
-import { BASE_URL } from '../../app/utils/request';
+// import axios from 'axios';
+// import { BASE_URL } from '../../app/utils/request';
 
 import { LayoutDashBoard } from '../../components/Layout/LayoutDashBoard';
 
 const DashBoard: React.FC = () => {
-  axios.get(`${BASE_URL}/api/products/${1}`).then(response => {
-    console.log(response.data);
-  });
+  // axios.get(`${BASE_URL}/api/products/${1}`).then(response => {
+  //   console.log(response.data);
+  // });
   return (
     <LayoutDashBoard title="Dashboard">
       <canvas

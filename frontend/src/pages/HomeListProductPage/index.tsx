@@ -1,38 +1,28 @@
 import React, { useEffect, useState } from 'react';
 
-import { ProductCard } from '../../components/ProductCard/';
-import { TypeProductPage } from '../../app/types/TypeProductPage';
+import { ProductCard } from '../../components/ProductCard';
+import { Product } from '../../app/types/Product';
 import { Pagination } from '../../components/Pagination';
 import { LayoutHome } from '../../components/Layout/LayoutHome';
-import { TypeSpringPage } from 'app/types/vendor/TypeSpring';
-import { TypeAxiosPage } from 'app/types/vendor/TypeAxios';
+import { Spring } from 'app/types/vendor/Spring';
 
-import { api } from '../../app/http/index';
 import { LoaderDefault } from 'app/common/LoaderDefault';
+import { ProductFindAll } from 'hooks/products/ProductFindAll';
 
 type formDataProps = {
   name: string;
   category: string;
 };
 
-const CatalogList: React.FC = () => {
-  const [products, setProducts] = useState<TypeSpringPage<TypeProductPage>>();
+const HomeListProductPage: React.FC = () => {
+  const [products, setProducts] = useState<Spring<Product>>();
   const [formData, seFormData] = useState<formDataProps>({
     name: '',
     category: '',
   });
 
   useEffect(() => {
-    const params: TypeAxiosPage = {
-      method: 'GET',
-      url: `/api/products/`,
-      params: {
-        page: 0,
-        size: 12,
-      },
-    };
-
-    api(params).then(response => {
+    ProductFindAll().then(response => {
       setProducts(response.data);
     });
   }, []);
@@ -110,4 +100,4 @@ const CatalogList: React.FC = () => {
   );
 };
 
-export default CatalogList;
+export default HomeListProductPage;

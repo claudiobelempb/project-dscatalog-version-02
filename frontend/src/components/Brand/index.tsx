@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 type BrandProsp = {
   href: string;
@@ -6,9 +7,9 @@ type BrandProsp = {
 
 const Brand: React.FC<BrandProsp> = ({ href }) => {
   return (
-    <a href={href} className="navbar-brand fw-bold bg-primary">
+    <Link to={href} className="navbar-brand fw-bold bg-primary">
       DS Catalog
-    </a>
+    </Link>
   );
 };
 export { Brand };
