@@ -1,8 +1,26 @@
-import React from 'react';
+import { AuthContext } from 'app/contexts/AuthContext';
+import { getTokenData } from 'app/utils/functions/getTokenData';
+import { isAuthenticated } from 'app/utils/functions/isAuthenticated';
+import React, { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-// import styles from './styles.module.scss';
 
 const Nav: React.FC = () => {
+  const { authContextData, setAuthContextData, handleLogout } =
+    useContext(AuthContext);
+
+  useEffect(() => {
+    if (isAuthenticated()) {
+      setAuthContextData({
+        authenticated: true,
+        tokenUserdata: getTokenData(),
+      });
+    } else {
+      setAuthContextData({
+        authenticated: false,
+      });
+    }
+  }, [setAuthContextData]);
+
   return (
     <>
       <button
@@ -28,11 +46,42 @@ const Nav: React.FC = () => {
               Catálogo
             </Link>
           </li>
-          <li className="nav-item">
+          {authContextData.authenticated ? (
+            <div className="dropdown ">
+              <button
+                className="btn btn-transparent text-white dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                {authContextData.tokenUserdata?.user_name}
+              </button>
+              <ul
+                className="dropdown-menu"
+                aria-labelledby="dropdownMenuButton1"
+              >
+                <li>
+                  <Link className="dropdown-item" to="/admin">
+                    Meu cadastro
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    onClick={handleLogout}
+                    className="dropdown-item"
+                    to="/admin/auth/login"
+                  >
+                    Sair
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          ) : (
             <Link className="nav-link" to="/admin/auth/login">
-              Admin
+              Login
             </Link>
-          </li>
+          )}
         </ul>
       </div>
     </>

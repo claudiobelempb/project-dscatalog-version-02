@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from 'react';
+import React, { createContext, ReactNode, useState } from 'react';
 
 type TypeThemeProps = {
   children: ReactNode;
@@ -6,13 +6,15 @@ type TypeThemeProps = {
 
 interface IThemeContext {
   theme: string;
+  toggleTheme: () => void;
 }
 
 const contextValue: IThemeContext = {
   theme: 'light',
+  toggleTheme: () => null,
 };
 
-const ThemeContext = createContext<IThemeContext | null>(null);
+const ThemeContext = createContext<IThemeContext>(contextValue);
 
 const ThemeContexProvider: React.FC<TypeThemeProps> = ({ children }) => {
   const [theme, setTheme] = useState('light');
@@ -20,7 +22,7 @@ const ThemeContexProvider: React.FC<TypeThemeProps> = ({ children }) => {
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
   return (
-    <ThemeContext.Provider value={contextValue}>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );

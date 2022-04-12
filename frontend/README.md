@@ -1,5 +1,10 @@
 # Getting Started with Create React App
 
+➜ rm -RF .git .cache build exports node_modeles package-lock.json
+
+atualiza os pacotes react
+➜ rpx npm-check -u
+
 ➜ yarn add react-hook-form -S
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

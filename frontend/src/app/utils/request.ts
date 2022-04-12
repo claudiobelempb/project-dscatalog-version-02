@@ -5,3 +5,5 @@ export const CLEINT_ID =
   process.env.REACT_APP_BACKEND_CLIENT_ID ?? 'myclientid';
 export const CLEINT_SECRET =
   process.env.REACT_APP_BACKEND_CLIENT_SECRET ?? 'myclientsecret';
+
+export const AuthUserLocalDsCatalogStorage = '@AuthUserLocalDsCatalogStorage';

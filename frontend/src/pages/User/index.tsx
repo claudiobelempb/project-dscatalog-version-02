@@ -19,7 +19,12 @@ const UserPage: React.FC = () => {
       <div>
         <h1>Users</h1>
         {users?.content.map(user => (
-          <p key={user.id}>{user.email}</p>
+          <div key={user.id}>
+            <p>
+              {user.email} - {user.status ? 'Ativo' : 'Inativo'}
+              {user.roles.map(role => role.id)}
+            </p>
+          </div>
         ))}
       </div>
     </LayoutDashBoard>

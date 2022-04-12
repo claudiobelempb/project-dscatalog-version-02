@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import './styles.module.css';
 
 import { FaShoppingCart, FaUserFriends, FaHome, FaTag } from 'react-icons/fa';
+import { AuthContext } from 'app/contexts/AuthContext';
+import { isAuthenticated } from 'app/utils/functions/isAuthenticated';
+import { getTokenData } from 'app/utils/functions/getTokenData';
 
 type LayoutDashBoardProps = {
   title: string;
@@ -13,6 +16,22 @@ const LayoutDashBoard: React.FC<LayoutDashBoardProps> = ({
   children,
   title,
 }) => {
+  const { authContextData, setAuthContextData, handleLogout } =
+    useContext(AuthContext);
+
+  useEffect(() => {
+    if (isAuthenticated()) {
+      setAuthContextData({
+        authenticated: true,
+        tokenUserdata: getTokenData(),
+      });
+    } else {
+      setAuthContextData({
+        authenticated: false,
+      });
+    }
+  }, [setAuthContextData]);
+
   return (
     <>
       <header className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -36,13 +55,36 @@ const LayoutDashBoard: React.FC<LayoutDashBoardProps> = ({
           placeholder="Search"
           aria-label="Search"
         />
-        <div className="navbar-nav">
-          <div className="nav-item text-nowrap">
-            <Link className="nav-link px-3" to="#">
-              Sign out
-            </Link>
+        <div className="navbar-nav"></div>
+        {authContextData.authenticated && (
+          <div className="dropdown ">
+            <button
+              className="btn btn-transparent text-white dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton1"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              {authContextData.tokenUserdata?.user_name}
+            </button>
+            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li>
+                <Link className="dropdown-item" to="/admin">
+                  Meu cadastro
+                </Link>
+              </li>
+              <li>
+                <Link
+                  onClick={handleLogout}
+                  className="dropdown-item"
+                  to="/admin/auth/login"
+                >
+                  Sair
+                </Link>
+              </li>
+            </ul>
           </div>
-        </div>
+        )}
       </header>
       <div className="container-fluid">
         <div className="row">

@@ -12,36 +12,45 @@ import User from 'pages/User';
 import Categories from 'pages/Categories';
 import Auth from 'pages/Auth';
 import NotFoundPage from 'pages/404';
-import { RequestAuth } from 'app/http/RequestAuth';
+import { PrivateRoute } from './PrivateRoute';
+import Filme from 'pages/Movie';
 
 const AppRoutes: React.FC = () => {
   return useRoutes([
     { path: '/', element: <Home /> },
     { path: '/products', element: <HomeListProductPage /> },
     { path: '/products/:id', element: <ProductDetail /> },
-    { path: '/admin', element: <DashBoard /> },
+    { path: '/movies', element: <Filme /> },
+    {
+      path: '/admin',
+      element: (
+        <PrivateRoute>
+          <DashBoard />
+        </PrivateRoute>
+      ),
+    },
     {
       path: '/admin/products',
       element: (
-        <RequestAuth>
+        <PrivateRoute>
           <DashboardListProductPage />
-        </RequestAuth>
+        </PrivateRoute>
       ),
     },
     {
       path: '/admin/categories',
       element: (
-        <RequestAuth>
+        <PrivateRoute>
           <Categories />
-        </RequestAuth>
+        </PrivateRoute>
       ),
     },
     {
       path: '/admin/users',
       element: (
-        <RequestAuth>
+        <PrivateRoute>
           <User />
-        </RequestAuth>
+        </PrivateRoute>
       ),
     },
     {
@@ -53,40 +62,6 @@ const AppRoutes: React.FC = () => {
       element: <NotFoundPage />,
     },
   ]);
-  /*return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/" element={<Home />} />
-      <Route path="/products/:id" element={<ProductDetail />} />
-      <Route path="/admin" element={<DashBoard />} />
-      <Route
-        path="/admin/products"
-        element={
-          <RequestAuth>
-            <Products />
-          </RequestAuth>
-        }
-      />
-      <Route
-        path="/admin/categories"
-        element={
-          <RequestAuth>
-            <Categories />
-          </RequestAuth>
-        }
-      />
-      <Route
-        path="/admin/users"
-        element={
-          <RequestAuth>
-            <User />
-          </RequestAuth>
-        }
-      />
-      <Route path="/admin/auth/login" element={<Auth />} />
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
-  );*/
 };
 
 export { AppRoutes };

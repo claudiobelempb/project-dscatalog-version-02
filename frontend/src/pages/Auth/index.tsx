@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 import { ButtonDefault } from 'components/ButtonDefault';
@@ -8,7 +8,6 @@ import { LayoutHome } from 'components/Layout/LayoutHome';
 import ImgLogin from '../../assets/images/login.svg';
 import { UserAuth } from 'hooks/users/UserAuth';
 import { toast } from 'react-toastify';
-import { getLocalStorage } from 'app/utils/functions/getLocalStorage';
 
 type FromDataUserProps = {
   username: string;
@@ -24,25 +23,18 @@ const Auth: React.FC = () => {
   // const [redirect, setRedirect] = useState<boolean>(false);
   const [hasError, setHasError] = useState<boolean>(false);
 
-  // const history = useHistory();
+  const navigate = useNavigate();
 
   const handleOnSubmit = (user: FromDataUserProps) => {
     UserAuth(user)
       .then(response => {
         setHasError(false);
-        const token = getLocalStorage(
-          '@AuthUserLocalDsCatalogStorage',
-        ).access_token;
-        console.log('Token: ', token);
-        console.log('Success: ', response);
         toast.success(`Sejá bem vindo (a) ${user.username}`);
-        // history.push('/admin');
+        navigate('/admin');
       })
       .catch(error => {
         setHasError(true);
-        console.log('Error: ', error);
         toast.error('Usuário ou senha inválido');
-        // history.push('/admin/auth/login');
       });
   };
 

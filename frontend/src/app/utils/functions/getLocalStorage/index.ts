@@ -1,5 +1,4 @@
-import { TypeUserLocalStorage } from '../../../types/TypeUserLocalStorage';
-export const getLocalStorage = (name: string) => {
+export const getLocalStorage = <T>(name: string): T => {
   const str = localStorage.getItem(name) ?? '{}';
-  return JSON.parse(str) as TypeUserLocalStorage;
+  return JSON.parse(str) as T;
 };

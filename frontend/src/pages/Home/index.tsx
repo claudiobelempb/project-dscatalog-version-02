@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useReducer } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as ImgBackgroundHome } from 'assets/images/background-home.svg';
 import { ButtonDefault } from 'components/ButtonDefault';
@@ -6,6 +6,7 @@ import { ButtonDefault } from 'components/ButtonDefault';
 import { LayoutHome } from '../..//components/Layout/LayoutHome';
 
 import styles from './styles.module.scss';
+import { AppContetx } from 'app/contexts/AppContetx';
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
@@ -14,9 +15,22 @@ const Home: React.FC = () => {
     navigate('/products');
   };
 
+  const { state, dispatch } = useContext(AppContetx);
+
+  const handleChangeName = () => {
+    dispatch({
+      type: 'SET_AUTH',
+      payload: {
+        authenticated: true,
+      },
+    });
+  };
+
   return (
     <>
       <LayoutHome>
+        <h2>{state.auth.authContextData.authenticated ? 'true' : 'false'}</h2>
+        <button onClick={handleChangeName}>Trocar name</button>
         <div className={`row d-flex flex-row-reverse ${styles.home_container}`}>
           <div className="col-sm-12 col-md-12 col-lg-6">
             <ImgBackgroundHome />

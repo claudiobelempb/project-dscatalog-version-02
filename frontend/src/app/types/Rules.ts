@@ -1,7 +1,7 @@
 export type Roles = {
-  id: number;
+  id?: number;
   authority: 'ROLE_OPERATOR' | 'ROLE_STUDENT' | 'ROLE_INSTRUCTOR';
-  status: 'ENABLED' | 'DISABLED';
-  createdAt: string;
-  updatedAt: string;
+  status?: 'ENABLED' | 'DISABLED';
+  createdAt?: string;
+  updatedAt?: string;
 };
