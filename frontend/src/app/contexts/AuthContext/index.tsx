@@ -1,6 +1,6 @@
 import React from 'react';
 import { TokenUserData } from 'app/types/TokenUserData';
-import { createContext, ReactNode, useState } from 'react';
+import { createContext, useState } from 'react';
 import { removeLocalStorage } from 'app/utils/functions/removeLocalStorage';
 import { AuthUserLocalDsCatalogStorage } from 'app/utils/request';
 

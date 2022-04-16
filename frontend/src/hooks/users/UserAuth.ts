@@ -2,7 +2,7 @@ import { setLocalStorage } from '../../app/utils/functions/setLocalStorage/index
 import qs from 'qs';
 import { AxiosResponse } from 'axios';
 import { CLEINT_ID, CLEINT_SECRET } from '../../app/utils/request';
-import { RequestClient } from 'app/http/RequestClient';
+import { http } from 'app/http/http';
 
 type UserAuthProps = {
   username: string;
@@ -19,7 +19,7 @@ const UserAuth = async (user: UserAuthProps): Promise<UserAuthProps> => {
     grant_type: 'password',
   });
 
-  const response: AxiosResponse<UserAuthProps> = await RequestClient({
+  const response: AxiosResponse<UserAuthProps> = await http({
     method: 'POST',
     url: '/oauth/token',
     data,

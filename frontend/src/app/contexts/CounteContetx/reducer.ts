@@ -15,8 +15,6 @@ export const reducer = (
   state: CounterContextType,
   action: ReducerActioinType,
 ) => {
-  console.log(action);
-
   switch (action.type) {
     case actionTypes.INCREASE:
       return { ...state, counter: state.counter + 1 };
@@ -26,8 +24,6 @@ export const reducer = (
       return { ...CounterInitialState };
     case actionTypes.SET_COUNTER:
       return { ...state, ...action.payload };
-    case actionTypes.DECREASE:
-      return { ...state, counter: state.counter - 1 };
     case actionTypes.ASYNC_INCRASE_START:
       return { ...state, loading: true };
     case actionTypes.ASYNC_INCRASE_END:

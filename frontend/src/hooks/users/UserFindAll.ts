@@ -1,9 +1,9 @@
 import { AxiosResponse } from 'axios';
-import { RequestClient } from 'app/http/RequestClient';
+import { http } from 'app/http/http';
 import { User } from 'app/types/User';
 
 const UserFindAll = async (): Promise<AxiosResponse> => {
-  const response: AxiosResponse<User> = await RequestClient({
+  const response: AxiosResponse<User> = await http({
     withCredentials: true,
     method: 'GET',
     url: '/api/users/',

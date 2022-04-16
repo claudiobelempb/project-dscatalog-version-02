@@ -1,11 +1,5 @@
-import React, {
-  createContext,
-  ReactNode,
-  useContext,
-  useReducer,
-  useState,
-} from 'react';
-import { BuildActions } from './BuildActions';
+import React, { createContext, ReactNode, useContext, useReducer } from 'react';
+// import { BuildActions } from './BuildActions';
 import { reducer } from './reducer';
 
 type CounterContextProviderProps = {
@@ -29,7 +23,7 @@ export const CounterInitialState: CounterContextInitialStateType = {
   loading: false,
 };
 
-const CounterContext = createContext<CounterContextType>({
+export const CounterContext = createContext<CounterContextType>({
   state: CounterInitialState,
   dispatch: () => null,
 });

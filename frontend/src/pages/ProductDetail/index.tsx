@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { RequestClient } from '../../app/http/RequestClient';
+import { http } from '../../app/http/http';
 
 import { FaArrowLeft } from 'react-icons/fa';
 import { ProductPrice } from '../../components/ProductPrice';
@@ -19,7 +19,7 @@ const ProductDetail: React.FC = () => {
   const { id } = useParams<paramsProps>();
 
   useEffect(() => {
-    RequestClient({
+    http({
       method: 'GET',
       url: `/api/products/${id}`,
     }).then(response => {

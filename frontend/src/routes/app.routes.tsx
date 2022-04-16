@@ -14,6 +14,10 @@ import Auth from 'pages/Auth';
 import NotFoundPage from 'pages/404';
 import { PrivateRoute } from './PrivateRoute';
 import Filme from 'pages/Movie';
+import Posts from 'pages/Posts/PostFindAllPage';
+import PostFindByIdPage from 'pages/Posts/PostFindByIDPage';
+import CountPage from 'pages/Count';
+import PeoplePage from 'pages/People';
 
 const AppRoutes: React.FC = () => {
   return useRoutes([
@@ -21,6 +25,10 @@ const AppRoutes: React.FC = () => {
     { path: '/products', element: <HomeListProductPage /> },
     { path: '/products/:id', element: <ProductDetail /> },
     { path: '/movies', element: <Filme /> },
+    { path: '/posts', element: <Posts /> },
+    { path: '/posts/:id', element: <PostFindByIdPage /> },
+    { path: '/count', element: <CountPage /> },
+    { path: '/peoples', element: <PeoplePage /> },
     {
       path: '/admin',
       element: (

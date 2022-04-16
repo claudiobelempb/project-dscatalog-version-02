@@ -25,6 +25,8 @@ const Filme: React.FC = () => {
 
       setLoading(false);
     } catch (error) {
+      setLoading(false);
+      setMovies([]);
       console.log(error);
       toast.error('Error Servidor');
     }

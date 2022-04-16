@@ -1,4 +1,4 @@
-import React, { useContext, useReducer } from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as ImgBackgroundHome } from 'assets/images/background-home.svg';
 import { ButtonDefault } from 'components/ButtonDefault';
