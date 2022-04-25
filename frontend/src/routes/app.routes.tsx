@@ -18,6 +18,7 @@ import Posts from 'pages/Posts/PostFindAllPage';
 import PostFindByIdPage from 'pages/Posts/PostFindByIDPage';
 import CountPage from 'pages/Count';
 import PeoplePage from 'pages/People';
+import Exemplo from 'pages/exemplo';
 
 const AppRoutes: React.FC = () => {
   return useRoutes([
@@ -29,6 +30,7 @@ const AppRoutes: React.FC = () => {
     { path: '/posts/:id', element: <PostFindByIdPage /> },
     { path: '/count', element: <CountPage /> },
     { path: '/peoples', element: <PeoplePage /> },
+    { path: '/exemplo', element: <Exemplo /> },
     {
       path: '/admin',
       element: (
