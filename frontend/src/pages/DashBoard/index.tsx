@@ -8,6 +8,7 @@ const DashBoard: React.FC = () => {
   // axios.get(`${BASE_URL}/api/products/${1}`).then(response => {
   //   console.log(response.data);
   // });
+
   return (
     <LayoutDashBoard title="Dashboard">
       <canvas

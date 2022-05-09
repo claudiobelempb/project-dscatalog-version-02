@@ -6,6 +6,7 @@ import { FaShoppingCart, FaUserFriends, FaHome, FaTag } from 'react-icons/fa';
 import { AuthContext } from 'app/contexts/AuthContext';
 import { isAuthenticated } from 'app/utils/functions/isAuthenticated';
 import { getTokenData } from 'app/utils/functions/getTokenData';
+import { HasAnyRoles } from 'app/utils/functions/HasAnyRoles';
 
 type LayoutDashBoardProps = {
   title: string;
@@ -94,38 +95,48 @@ const LayoutDashBoard: React.FC<LayoutDashBoardProps> = ({
           >
             <div className="position-sticky pt-3">
               <ul className="nav flex-column">
-                <li className="nav-item">
-                  <NavLink className="nav-link" aria-current="page" to="/admin">
-                    <span data-feather="home">
-                      <FaHome className="me-2" />
-                    </span>
-                    Dashboard
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/admin/products">
-                    <span data-feather="shopping-cart">
-                      <FaShoppingCart className="me-2" />
-                    </span>
-                    Produtos
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/admin/categories">
-                    <span data-feather="shopping-cart">
-                      <FaTag className="me-2" />
-                    </span>
-                    Categórias
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/admin/users">
-                    <span data-feather="users">
-                      <FaUserFriends className="me-2" />
-                    </span>
-                    Users
-                  </NavLink>
-                </li>
+                {HasAnyRoles(['ROLE_ADMIN', 'ROLE_OPERATOR']) && (
+                  <>
+                    <li className="nav-item">
+                      <NavLink
+                        className="nav-link"
+                        aria-current="page"
+                        to="/admin"
+                      >
+                        <span data-feather="home">
+                          <FaHome className="me-2" />
+                        </span>
+                        Dashboard
+                      </NavLink>
+                    </li>
+                    <li className="nav-item">
+                      <NavLink className="nav-link" to="/admin/products">
+                        <span data-feather="shopping-cart">
+                          <FaShoppingCart className="me-2" />
+                        </span>
+                        Produtos
+                      </NavLink>
+                    </li>
+                    <li className="nav-item">
+                      <NavLink className="nav-link" to="/admin/categories">
+                        <span data-feather="shopping-cart">
+                          <FaTag className="me-2" />
+                        </span>
+                        Categórias
+                      </NavLink>
+                    </li>
+                  </>
+                )}
+                {HasAnyRoles(['ROLE_ADMIN']) && (
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="/admin/users">
+                      <span data-feather="users">
+                        <FaUserFriends className="me-2" />
+                      </span>
+                      Users
+                    </NavLink>
+                  </li>
+                )}
               </ul>
             </div>
           </nav>

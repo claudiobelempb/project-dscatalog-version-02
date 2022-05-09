@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, Location, Route, useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 import { ButtonDefault } from 'components/ButtonDefault';
@@ -14,29 +14,33 @@ type FromDataUserProps = {
   password: string;
 };
 
-const Auth: React.FC = () => {
+const LoginPage: React.FC = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FromDataUserProps>();
-  // const [redirect, setRedirect] = useState<boolean>(false);
   const [hasError, setHasError] = useState<boolean>(false);
-
-  const navigate = useNavigate();
+  const [redirect, setRedirect] = useState<boolean>(false);
+  const history = useLocation();
+  console.log(history);
 
   const handleOnSubmit = (user: FromDataUserProps) => {
     UserAuth(user)
       .then(response => {
         setHasError(false);
         toast.success(`Sejá bem vindo (a) ${user.username}`);
-        navigate('/admin');
+        setRedirect(true);
       })
       .catch(error => {
         setHasError(true);
         toast.error('Usuário ou senha inválido');
       });
   };
+
+  if (redirect) {
+    return <Navigate to={'/admin'} />;
+  }
 
   return (
     <LayoutHome>
@@ -120,4 +124,4 @@ const Auth: React.FC = () => {
   );
 };
 
-export default Auth;
+export default LoginPage;

@@ -31,7 +31,10 @@ const ProductDetail: React.FC = () => {
     <LayoutHome>
       <div className="container bg-white rounded-3 mt-5 p-3 m-auto">
         <div className="row py-3">
-          <Link className="fs-4 text-dark fw-bold text-uppercase" to="/catalog">
+          <Link
+            className="fs-4 text-dark fw-bold text-uppercase"
+            to="/products"
+          >
             <FaArrowLeft className="fw-bold fs-3 text-primary" /> Voltar
           </Link>
         </div>

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Navigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Navigate, useLocation } from 'react-router-dom';
 
 import { isAuthenticated } from 'app/utils/functions/isAuthenticated';
 
@@ -8,13 +8,11 @@ type RequestAuthProps = {
 };
 
 const PrivateRoute: React.FC<RequestAuthProps> = ({ children }) => {
-  const isAuth = isAuthenticated();
-
-  if (!isAuth) {
-    return <Navigate to={{ pathname: '/admin/auth/login' }} />;
-  }
-
-  return children;
+  return isAuthenticated() ? (
+    children
+  ) : (
+    <Navigate to={{ pathname: '/admin/auth/login' }} />
+  );
 };
 
 export { PrivateRoute };

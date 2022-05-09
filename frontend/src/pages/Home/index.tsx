@@ -7,6 +7,7 @@ import { LayoutHome } from '../..//components/Layout/LayoutHome';
 
 import styles from './styles.module.scss';
 import { AppContetx } from 'app/contexts/AppContetx';
+import { HasAnyRoles } from 'app/utils/functions/HasAnyRoles';
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
@@ -29,7 +30,17 @@ const Home: React.FC = () => {
   return (
     <>
       <LayoutHome>
-        <h2>{state.auth.authContextData.authenticated ? 'true' : 'false'}</h2>
+        <h2>
+          {HasAnyRoles([
+            'ROLE_INSTRUCTOR',
+            'ROLE_ADMIN',
+            'ROLE_INSTRUCTOR',
+            'ROLE_STUDENT',
+            'ROLE_OPERATOR',
+          ])
+            ? 'true'
+            : 'false'}
+        </h2>
         <button onClick={handleChangeName}>Trocar name</button>
         <div className={`row d-flex flex-row-reverse ${styles.home_container}`}>
           <div className="col-sm-12 col-md-12 col-lg-6">

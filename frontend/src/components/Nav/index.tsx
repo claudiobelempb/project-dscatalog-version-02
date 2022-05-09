@@ -2,7 +2,7 @@ import { AuthContext } from 'app/contexts/AuthContext';
 import { getTokenData } from 'app/utils/functions/getTokenData';
 import { isAuthenticated } from 'app/utils/functions/isAuthenticated';
 import React, { useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Nav: React.FC = () => {
   const { authContextData, setAuthContextData, handleLogout } =
@@ -37,14 +37,14 @@ const Nav: React.FC = () => {
       <div className="collapse navbar-collapse" id="dscatalog-navbar">
         <ul className="navbar-nav ms-auto">
           <li className="nav-item">
-            <Link className=" active nav-link" aria-current="page" to="/">
+            <NavLink className=" nav-link" aria-current="page" to="/">
               Home
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/products">
+            <NavLink className="nav-link" to="/products">
               Catálogo
-            </Link>
+            </NavLink>
           </li>
           {authContextData.authenticated ? (
             <div className="dropdown ">
@@ -62,25 +62,25 @@ const Nav: React.FC = () => {
                 aria-labelledby="dropdownMenuButton1"
               >
                 <li>
-                  <Link className="dropdown-item" to="/admin">
+                  <NavLink className="dropdown-item" to="/admin">
                     Meu cadastro
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link
+                  <NavLink
                     onClick={handleLogout}
                     className="dropdown-item"
                     to="/admin/auth/login"
                   >
                     Sair
-                  </Link>
+                  </NavLink>
                 </li>
               </ul>
             </div>
           ) : (
-            <Link className="nav-link" to="/admin/auth/login">
+            <NavLink className="nav-link" to="/admin/auth/login">
               Login
-            </Link>
+            </NavLink>
           )}
         </ul>
       </div>

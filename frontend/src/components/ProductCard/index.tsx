@@ -11,7 +11,10 @@ type ProductCardProps = {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
-    <Link className="col-sm-6 col-lg-3 col-xl-3" to={`/catalog/${product.id}`}>
+    <Link
+      className="col-sm-6 col-lg-3 col-xl-3 text-decoration-none"
+      to={`/products/${product.id}`}
+    >
       <div className="card shadow">
         <div className="card-body">
           <img

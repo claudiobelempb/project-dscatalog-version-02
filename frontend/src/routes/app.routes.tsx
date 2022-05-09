@@ -10,7 +10,7 @@ import ProductDetail from 'pages/ProductDetail';
 import DashboardListProductPage from 'pages/DashboardListProductPage';
 import User from 'pages/User';
 import Categories from 'pages/Categories';
-import Auth from 'pages/Auth';
+import LoginPage from 'pages/Login';
 import NotFoundPage from 'pages/404';
 import { PrivateRoute } from './PrivateRoute';
 import Filme from 'pages/Movie';
@@ -65,7 +65,7 @@ const AppRoutes: React.FC = () => {
     },
     {
       path: '/admin/auth/login',
-      element: <Auth />,
+      element: <LoginPage />,
     },
     {
       path: '*',

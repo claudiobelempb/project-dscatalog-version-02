@@ -1,6 +1,8 @@
+import { Role } from './Role';
+
 export type Roles = {
   id?: number;
-  authority: 'ROLE_OPERATOR' | 'ROLE_STUDENT' | 'ROLE_INSTRUCTOR';
+  authority: Role[];
   status?: 'ENABLED' | 'DISABLED';
   createdAt?: string;
   updatedAt?: string;
