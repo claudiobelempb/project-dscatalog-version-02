@@ -58,7 +58,7 @@ const AppRoutes: React.FC = () => {
     {
       path: '/admin/users',
       element: (
-        <PrivateRoute>
+        <PrivateRoute roles={['ROLE_ADMIN']}>
           <User />
         </PrivateRoute>
       ),
