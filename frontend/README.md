@@ -2,7 +2,7 @@
 
 ➜ rm -RF .git .cache build exports node_modeles package-lock.json
 
-atualiza os pacotes react
+# atualiza os pacotes react
 ➜ rpx npm-check -u
 
 ➜ yarn add react-hook-form -S
